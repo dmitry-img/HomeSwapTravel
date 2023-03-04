@@ -4,9 +4,9 @@ using AutoMapper;
 using HomeSwapTravel.Application.Common.Exceptions;
 using HomeSwapTravel.Domain.Entities;
 using MediatR;
-using Application.Common.Models;
 using Domain.ValueObjects;
 using Application.Reviews;
+using Application.Common.Models;
 
 namespace HomeSwapTravel.Application.Homes.Queries.GetHome;
 

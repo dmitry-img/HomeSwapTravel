@@ -10,5 +10,4 @@ public class HomeOwnerDto : IMapFrom<HomeOwner>
     public string? LastName { get; set; }
     public string? PhotoPath { get; set; }
     public int ExchangesCount { get; set; }
-    public IList<Language>? SpokenLanguages { get; set; }
 }

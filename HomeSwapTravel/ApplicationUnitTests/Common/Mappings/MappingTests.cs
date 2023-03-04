@@ -1,5 +1,6 @@
 ﻿using System.Runtime.Serialization;
 using Application.Common.Models;
+using Application.Requests.Queries;
 using Application.Reviews;
 using AutoMapper;
 using HomeSwapTravel.Application.Common.Mappings;
@@ -8,7 +9,6 @@ using HomeSwapTravel.Application.Homes.Commands.UpdateHome;
 using HomeSwapTravel.Application.Homes.Queries.GetHome;
 using HomeSwapTravel.Application.Homes.Queries.GetHomesWithPagination;
 using HomeSwapTravel.Application.Requests.Commands.CreateRequest;
-using HomeSwapTravel.Application.Requests.Queries.GetRequests;
 using HomeSwapTravel.Application.Reviews.Commands.CreateReview;
 using HomeSwapTravel.Domain.Entities;
 using Microsoft.Extensions.DependencyInjection.Models;

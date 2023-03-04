@@ -33,13 +33,15 @@ public class CreateReviewCommandHandler : IRequestHandler<CreateReviewCommand, i
     private readonly IMapper _mapper;
     private readonly ICurrentUserService _currentUserService;
     private readonly IHomeOwnerService _homeOwnerService;
+    private readonly IHomeRepository _homeRepository;
 
-    public CreateReviewCommandHandler(IHomeReviewRepository homeReviewRepository, IMapper mapper, ICurrentUserService currentUserService, IHomeOwnerService homeOwnerService)
+    public CreateReviewCommandHandler(IHomeReviewRepository homeReviewRepository, IMapper mapper, ICurrentUserService currentUserService, IHomeOwnerService homeOwnerService, IHomeRepository homeRepository)
     {
         _homeReviewRepository = homeReviewRepository;
         _mapper = mapper;
         _currentUserService = currentUserService;
         _homeOwnerService = homeOwnerService;
+        _homeRepository = homeRepository;
     }
 
     public async Task<int> Handle(CreateReviewCommand request, CancellationToken cancellationToken)
@@ -58,7 +60,9 @@ public class CreateReviewCommandHandler : IRequestHandler<CreateReviewCommand, i
         review.ReviewerId = homeOwner.Id;
 
         var result = await _homeReviewRepository.AddAsync(new HomeReview() { Review = review, HomeId = request.HomeId });
-        
+
+        await _homeRepository.RecalculateRatingAsync(request.HomeId);
+
         return result.ReviewId;
     }
 }

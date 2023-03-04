@@ -12,6 +12,5 @@ public class HomeOwner
     public int ExchangesCount { get; set; }
     public bool EmailVerified { get; set; }
     public bool PhoneVerified { get; set; }
-    public IList<Language>? SpokenLanguages { get; set; }
     public IList<HomeOwnerVisitedHome>? VisitedHomes { get; set; }
 }

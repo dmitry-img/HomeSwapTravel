@@ -1,5 +1,6 @@
 ﻿using HomeSwapTravel.Application.Common.Interfaces.Persistence;
 using HomeSwapTravel.Domain.Entities;
+using HomeSwapTravel.Domain.Enums;
 using HomeSwapTravel.Infrastructure.Persistence;
 using Microsoft.EntityFrameworkCore;
 using System.Threading;
@@ -35,6 +36,23 @@ public class HomeRepository : GenericRepository<Home>, IHomeRepository
             .Include(h => h.HomeReviews)
                 .ThenInclude(h => h.Review)
             .FirstOrDefaultAsync(h => h.Id == id);
+    }
+
+    public async Task RecalculateRatingAsync(int homeId)
+    {
+        var home = await _dbContext.Homes.FirstOrDefaultAsync(h => h.Id == homeId);
+
+        var reviewRating = await _dbContext.HomeReviews
+            .Include(hr => hr.Review)
+            .Where(hr => hr.HomeId == homeId)
+            .Select(hr => (int) hr.Review.Rating)
+            .ToListAsync();
+
+        var avgRating = double.Round(reviewRating.Average(), MidpointRounding.ToZero);
+        
+        home.Rating = (HomeRating) avgRating;
+
+        await _dbContext.SaveChangesAsync();
     }
 }
 

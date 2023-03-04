@@ -34,9 +34,7 @@ public class HomeOwnerService : IHomeOwnerService
             LastName = user.LastName,
             EmailVerified = user.EmailConfirmed,
             PhoneVerified = user.PhoneNumberConfirmed,
-            ExchangesCount = user.ExchangesCount,
             PhotoPath = user.PhotoPath,
-            SpokenLanguages = user.SpokenLanguages,
             VisitedHomes = homeVisited.ToList(),
         };
     }
@@ -51,9 +49,7 @@ public class HomeOwnerService : IHomeOwnerService
             LastName = user.LastName,
             EmailVerified = user.EmailConfirmed,
             PhoneVerified = user.PhoneNumberConfirmed,
-            ExchangesCount = user.ExchangesCount,
-            PhotoPath = user.PhotoPath,
-            SpokenLanguages = user.SpokenLanguages
+            PhotoPath = user.PhotoPath
         }).ToList();
     }
 }

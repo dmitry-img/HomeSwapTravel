@@ -137,32 +137,7 @@ public class ApplicationDbContextInitialiser
                 new BedType() { Name = "Portable cribs" },
                 new BedType() { Name = "Portable cribs" }
             );
-        }
-
-        if (!await _context.BedTypes.AnyAsync())
-        {
-            _context.Languages.AddRange(
-                new Language() { Name = "Français" },
-                new Language() { Name = "English" },
-                new Language() { Name = "Español" },
-                new Language() { Name = "Italiano" },
-                new Language() { Name = "Português" },
-                new Language() { Name = "Nederlands" },
-                new Language() { Name = "عربي" },
-                new Language() { Name = "中文" },
-                new Language() { Name = "日本語" },
-                new Language() { Name = "한국어" },
-                new Language() { Name = "Türkçe" },
-                new Language() { Name = "Eλληνικά" },
-                new Language() { Name = "Українська" },
-                new Language() { Name = "Deutsch" },
-                new Language() { Name = "Dansk" },
-                new Language() { Name = "hrvatski" },
-                new Language() { Name = "Norsk" },
-                new Language() { Name = "Svenska" }
-            );
-        }
-            
+        }   
         
         await _context.SaveChangesAsync();
     }

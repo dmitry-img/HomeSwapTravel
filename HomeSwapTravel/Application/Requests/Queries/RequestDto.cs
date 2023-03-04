@@ -5,7 +5,7 @@ using HomeSwapTravel.Domain.Entities;
 using HomeSwapTravel.Domain.Enums;
 using Microsoft.Extensions.DependencyInjection.Models;
 
-namespace HomeSwapTravel.Application.Requests.Queries.GetRequests;
+namespace Application.Requests.Queries;
 
 public class RequestDto : IMapFrom<Request>
 {

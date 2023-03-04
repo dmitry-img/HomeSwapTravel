@@ -19,9 +19,21 @@ public class RequestRepository : GenericRepository<Request>, IRequestRepository
         await _dbContext.SaveChangesAsync();
     }
 
-    public IEnumerable<Request> GetByHomeOwner(string homeOwnerId)
+    public IEnumerable<Request> GetReceivedByHomeOwner(string homeOwnerId)
     {
         return _dbContext.Requests.Include(r => r.AvailablePeriod).Where(r => r.ReceiverId == homeOwnerId);
+    }
+
+    public IEnumerable<Request> GetSentByHomeOwner(string homeOwnerId)
+    {
+        return _dbContext.Requests.Include(r => r.AvailablePeriod).Where(r => r.SenderId == homeOwnerId);
+    }
+
+    public async Task<Request?> GetWithDeatilsAsync(int id)
+    {
+        return await _dbContext.Requests
+            .Include(r => r.AvailablePeriod)
+            .FirstOrDefaultAsync(r => r.Id == id);
     }
 }
 

@@ -44,6 +44,5 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     public DbSet<Review> Reviews => Set<Review>();
     public DbSet<HomeReview> HomeReviews => Set<HomeReview>();
     public DbSet<Rule> Rules => Set<Rule>();
-    public DbSet<Language> Languages => Set<Language>();
     public DbSet<HomeOwnerVisitedHome> HomeOwnerVisitedHomes => Set<HomeOwnerVisitedHome>();
 }
