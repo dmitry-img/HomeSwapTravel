@@ -1,10 +1,13 @@
 {
-  "name": "client-app",
+  "name": "clientapp",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "run-script-os",
+    "start:windows": "ng serve --port 44447 --ssl",
+    "start:default": "ng serve --port 44447 --ssl",
     "build": "ng build",
+    "build:ssr": "ng run ClientApp:server:dev",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
@@ -18,6 +21,7 @@
     "@angular/platform-browser": "^15.2.0",
     "@angular/platform-browser-dynamic": "^15.2.0",
     "@angular/router": "^15.2.0",
+    "run-script-os": "^1.1.6",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.12.0"
